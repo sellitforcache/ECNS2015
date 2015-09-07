@@ -5,34 +5,88 @@
 
 \author{R M Bergmann, U Filges, D Kiselev, T Reiss, V Talanov and M Wohlmuther}
 
-
-
-
-
-
 \address{Paul Scherrer Institut, 5232 Villigen, Switzerland}
 
 \ead{ryan.bergmann@psi.ch}
 
-\begin{abstract}Changing the configuration of the cold neutron source during an extended shutdown of Swiss Spallation Neutron Source (SINQ) is being considered for improving performance of the instruments that use the cold source.  The cold neutron source consists of a 20 L volume of liquid D2 at approximately 25 K.  Previous upgrades included adding a re-entrant hole into one side of the D2 volume to allow cold neutrons to stream uninhibited from the center of the source towards the instrument neutron guides.  Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.6, with gains increasing with wavelength. These increases have not been observed, and it is suspected that the re-entrant hole is not fully voided.  Voiding the re-entrant hole relies on radiative heating to boil D2 which in turn fills the re-entrant hole cavity, pushing the liquid D2 out.  Proposed plans include making the re-entrant hole external (ensuring that it is not filled with liquid D2), removing some extra structural material around the D2 tank, redesigning the re-entrant hole geometry to be more optically ideal, introducing a Pb-208 reflector to minimize cold neutron up-scattering from the surrounding D2O moderator tank, and implementing a small liquid H2 volume to provide a cold neutron “hot spot” for certain instruments.  These changes are predicted to increase neutron fluence between 1.1 to 2.0 times the current levels, depending on instrument location, view, and wavelengths of interest.
+\begin{abstract}Changing the configuration of the cold neutron source during an extended shutdown of Swiss Spallation Neutron Source (SINQ) is being considered for improving performance of the instruments that use the cold source.  The cold neutron source consists of a 20 L volume of liquid D$_2$ at approximately 25 K.  Previous upgrades included adding a re-entrant hole into one side of the D$_2$ volume to allow cold neutrons to stream uninhibited from the center of the source towards the instrument neutron guides.  Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.6, with gains increasing with wavelength. These increases have not been observed, and it is suspected that the re-entrant hole is not fully voided.  Voiding the re-entrant hole relies on radiative heating to boil D$_2$ which in turn fills the re-entrant hole cavity, pushing the liquid D$_2$ out.  Proposed plans include making the re-entrant hole external (ensuring that it is not filled with liquid D$_2$), removing some extra structural material around the D2 tank, redesigning the re-entrant hole geometry to be more optically ideal, introducing a Pb-208 reflector to minimize cold neutron up-scattering from the surrounding D$_2$O moderator tank, and implementing a small liquid H$_2$ volume to provide a cold neutron “hot spot” for certain instruments.  These changes are predicted to increase neutron fluence between 1.1 to 2.0 times the current levels, depending on instrument location, view, and wavelengths of interest.
 \end{abstract}
 
 \ack{This work was supported by Swiss National Science Foundation grant 200021\_150048/1.}
 
 \section{Introduction}
 
-\section{Preparing your paper}
+There is a planned shutdown of the Swiss Spallation Neutron Source (SINQ) in 2017, which provides an opportunity for changes to be made to the liquid deuterium cold neutron source.  The 20 liter volume of liquid D$_2$ at approximately 25 K is located within the D$_2$O moderator tank surrounding the Pb spallation target.  The innermost face of the cold source is approximately 35 cm away from the center of the target.  In the planned upgrade strategies, no changes to the surrounding aluminium and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  I.e., all changes must fit into the existing multi-walled insert geometry.  
+
+\section{Re-entrant Hole}
+
+The goal of the re-entrant hole (REH) is to remove scattering and absorbing material between the cold neutron maximum and the direction of interest.  In this case, the cold neutron maximum is at the center of the cold source and the direciton of interest is towards the SINQ guide hall.  
+
+Voiding the re-entrant hole relies on radiative heating to boil D$_2$ which in turn fills the re-entrant hole cavity, pushing the liquid D$_2$ out.  Proposed plans include making the re-entrant hole external (ensuring that it is not filled with liquid D$_2$)
+
+Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.6, with gains increasing with wavelength. These increases have not been observed, and it is suspected that the re-entrant hole is not fully voided.  All future designs will have an external REH, which will decouple the fill level from radiation heating and ensure that the REH is never filled with liquid D$_2$.
+
+\section{Simulation Geometry}
+
+\begin{figure}
+\begin{center}
+\includegraphics[trim={9.2cm 8cm 4cm 8cm},clip]{graphics/geom.pdf}
+\end{center}
+\caption{\label{geom}A horizontal slice through the MCNP simulation geometry showing the target (magenta), moderator tank (blue_, cold source (purple), nozzle (pink), and neutron guide entrance (grey with circle).}
+\end{figure}
+
+plot of geom, mention variance reduction
+
+\section{Neutron Guide Response} 
 
 
-\section{The title, authors, addresses and abstract} 
+\subsection{Guide Reflectivity}
+
+model
+guide parameters
+stability issues
+
+\cite{mcnpx_reflectivity}
 
 
-\subsection{Sample coding for the start of an article}
+\subsection{Reconstruction}
 
-\section{The text}
+method for entry
+plot of transfer curves and/or contour plot
+
+
+\subsection{Self-Consistency Test}
+
+plot of benchmark
+
+\section{REH Parametric Study in the Horizontal Plane}
+
+
+\subsection{Parameters}
+
+plot of reh and angles
+summary of cases
+
+
+\subsection{Study Results}
+
+plot of spectral band
+plot of geometry in XY
+
+
+\section{Conculsions}
+
+28\% is great
+
+
+
+\section{Future Work}
+
+all that jazz
+
+
 
 \section{References}
-
 
 \subsection{Using \BibTeX}
 We highly recommend the {\ttfamily\textbf\selectfont iopart-num} \BibTeX\ package by Mark~A~Caprio \cite{iopartnum}, which is included with this documentation.
@@ -55,15 +109,6 @@ We highly recommend the {\ttfamily\textbf\selectfont iopart-num} \BibTeX\ packag
 \end{minipage}
 \end{figure}
 
-Using the graphicx package figures can be included using code such as:
-\begin{verbatim}
-\begin{figure}
-\begin{center}
-\includegraphics{file.eps}
-\end{center}
-\caption{\label{label}Figure caption}
-\end{figure}
-\end{verbatim}
 
 \section*{References}
 \begin{thebibliography}{9}
