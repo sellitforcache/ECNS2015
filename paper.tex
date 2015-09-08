@@ -81,7 +81,7 @@ Since the neutron reflection probability is based on momentum transfer and the r
 
 \subsection{Reconstruction}
 
-In order to approximate the neutron current exiting the guide, a number of fixed-source runs of MCNPX were done as precalculations to the parametric study.  An evenly-distributed source was defined at the entrance surface of the guide that emits neutrons in a polar angle bin $1/8^\circ$ wide and logarithmically in energy (to ensure low energies are sampled fairly).  The exiting current at the end of the guide was tallied and divided by the entrance current to yield a transfer function in energy for the polar angle of the source.  This was done for $0-7.5^\circ$ of polar angle to yield the set of 60 functions shown in figure \ref{xfer_func}.
+In order to approximate the neutron current exiting the guide, a number of fixed-source runs of MCNPX were done as precalculations to the parametric study.  An evenly-distributed source was defined at the entrance surface of the guide that emits neutrons in a polar angle bin $1/8^\circ$ wide and logarithmically in energy (to ensure low energies are sampled fairly).  The exiting current at the end of the guide was tallied and divided by the entrance current to yield a transfer function in energy for the polar angle of the source.  This was done for $0-7.5^\circ$ of polar angle to yield the set of 60 functions shown in figure \ref{xfer_func}.  The colors mean????
 
 %trim <left> <lower> <right> <upper>
 \begin{figure}
@@ -91,9 +91,11 @@ In order to approximate the neutron current exiting the guide, a number of fixed
 \caption{\label{xfer_func}Set of transfer functions for a m=2 guide.}
 \end{figure}
 
-If neutrons are tallied at the guide entrance in the same polar and energy binning as the transfer funcitons, it can be multiplied by the set and summed over all incident angles to yield the integrated neutron spectrum at the guide exit.
+If neutrons are tallied at the guide entrance in the same polar and energy binning as the transfer funcitons, it can be multiplied by the set and summed over all incident angles to yield the integrated neutron spectrum at the guide exit.  This way, the reflectivity model can be eliminated from the transport runs and a good estimate of the exiting current can still be made.
 
 \subsection{Self-Consistency Test}
+
+In order to verify that the reconstruction method works as expected, a comparison to the spectrum calculated by the explicit model was made.  As mentioned previously, a surface source was written at the guide entrance, then this was used as the source for a second run with the guide reflectivity activiated.  During this run, the entry and exit current was tallied.  The entry current was binning in polar angle according to the divisions in the pre-calculated transfer functions.  The results of the comparison are shown in Figure \ref{xfer_bench}.  The green line is the integrated neutron spectrum at the guide entrance, the blue line is the integrated exit current that was tallied at the guide exit, and the red curve is the exit spectrum calculated by multiplying the entrance spectrum by the transfer functions (and then summing them).  The maximum error seen is about XXX\%, and decreases with energy, and has a 1-norm value of XXX\%.
 
 \begin{figure}
 \begin{center}
@@ -104,18 +106,34 @@ If neutrons are tallied at the guide entrance in the same polar and energy binni
 
 \section{REH Parametric Study in the Horizontal Plane}
 
+The re-entrant hole parametric study was done to investigate a wide range of geometries in the horizonal plane, where the guide width is smaller than the hole size.  Four REH depths (114, 10, 6, 2 cm), four opening widths (4, 8, 12, 16 cm), and eleven hole slopes (-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5) were investigated in the study for a total of 176 cases. Figure \ref{parametric_geom} shows the parameters in relation to the cold source geometry.
 
-\subsection{Parameters}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.4]{graphics/xfer_bench.pdf}
+\end{center}
+\caption{\label{parametric_geom}The geometry varied in the REH parametric study.}
+\end{figure}
 
-plot of reh and angles
-summary of cases
+
+plot of spectral band, FOM is
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.38,trim={1cm 2.35cm 1cm 0cm},clip]{graphics/parametric_REH.pdf}
+\end{center}
+\caption{\label{parametric_REH}The envelope formed by the spectra from all 176 cases considered (upper) and their figures of merit (lower) which is total current from 3 to 6 \AA.}
+\end{figure}
 
 
-\subsection{Study Results}
-
-plot of spectral band
 plot of geometry in XY
 
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6,trim={11.2cm 8cm 5cm 3cm},clip]{graphics/case077.pdf}
+\end{center}
+\caption{\label{case077}The best-performing horizontal geometry for the REH.}
+\end{figure}
 
 \section{Conculsions}
 
@@ -134,29 +152,6 @@ all that jazz
 \subsection{Using \BibTeX}
 We highly recommend the {\ttfamily\textbf\selectfont iopart-num} \BibTeX\ package by Mark~A~Caprio \cite{iopartnum}, which is included with this documentation.
 
-
-\begin{figure}[h]
-\begin{minipage}{14pc}
-\includegraphics[width=14pc]{name.eps}
-\caption{\label{label}Figure caption for first of two sided figures.}
-\end{minipage}\hspace{2pc}%
-\begin{minipage}{14pc}
-\includegraphics[width=14pc]{name.eps}
-\caption{\label{label}Figure caption for second of two sided figures.}
-\end{minipage} 
-\end{figure}
-
-\begin{figure}[h]
-\includegraphics[width=14pc]{name.eps}\hspace{2pc}%
-\begin{minipage}[b]{14pc}\caption{\label{label}Figure caption for a narrow figure where the caption is put at the side of the figure.}
-\end{minipage}
-\end{figure}
-
-
-\section*{References}
-\begin{thebibliography}{9}
-\bibitem{iopartnum} IOP Publishing is to grateful Mark A Caprio, Center for Theoretical Physics, Yale University, for permission to include the {\tt iopart-num} \BibTeX package (version 2.0, December 21, 2006) with  this documentation. Updates and new releases of {\tt iopart-num} can be found on \verb"www.ctan.org" (CTAN). 
-\end{thebibliography}
 
 \end{document}
 
