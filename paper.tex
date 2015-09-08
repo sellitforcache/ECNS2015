@@ -52,7 +52,7 @@ Also, some stability issues were encountered while using the reflectivtity patch
 
 \subsection{Guide Reflectivity}
 
-The guide reflectivity model implmented in MCNP is identical to that used in McStas.  The reflectivity curve for the current guide in the SINQ hall is shown in Figure \ref{SINQ_reflectivity}, along with the reflectivity equation and parameter values shown in Eq. \ref{eq:ref}.
+The guide reflectivity model implmented in MCNP is identical to that used in McStas.  The reflectivity curve for the current guide in the SINQ hall is shown in Figure \ref{SINQ_reflectivity} andh the reflectivity equation and parameter values shown in Eq. \ref{eq:ref}.  The values shown are the same for all the guides in the SINQ hall \cite{SINQ_guide_values}.
 
 \begin{figure}[h]
 \begin{minipage}{14pc}
@@ -68,28 +68,39 @@ R(Q) =
     \\
     \mbox{if } Q \leq Q_c :\\
     R_0 \\
-\end{cases} \\ \\ 
+\end{cases} \\ \\ \\
 \begin{tabular}{c c c}
 $R_0=0.995$ & $Q_c=2.17\times10^{-2}\AA^{-1}$ & $m=1.9$ \\ 
-$\alpha=6.40 \AA$ & $W=4\times10^{-3} \AA^{-1}$ 
-\end{tabular}
+$\alpha=6.40 \AA$ & $W=4.0\times10^{-3} \AA^{-1}$ 
+\end{tabular} \\
 \end{multline}
 \end{minipage} 
 \end{figure}
 
-
-\cite{mcnpx_reflectivity}
-
+Since the neutron reflection probability is based on momentum transfer and the reflections are specular, it is determined by the incident neutron angle and energy.  If the guide is rectangular, the reflection probability will not change as the neutron travels down the guide since the reflection angle will remain constant.  These conditions mean that the exiting neutron current should be compleltely defined by the incident polar angle and energy of a neutron entering the guide.  The position in the guide entrance will determine the phase of the exiting rays, but if the entire exit surface is summed over, this phase becomes irrelevant.
 
 \subsection{Reconstruction}
 
-method for entry
-plot of transfer curves and/or contour plot
+In order to approximate the neutron current exiting the guide, a number of fixed-source runs of MCNPX were done as precalculations to the parametric study.  An evenly-distributed source was defined at the entrance surface of the guide that emits neutrons in a polar angle bin $1/8^\circ$ wide and logarithmically in energy (to ensure low energies are sampled fairly).  The exiting current at the end of the guide was tallied and divided by the entrance current to yield a transfer function in energy for the polar angle of the source.  This was done for $0-7.5^\circ$ of polar angle to yield the set of 60 functions shown in figure \ref{xfer_func}.
 
+%trim <left> <lower> <right> <upper>
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.3,trim={2cm 1.7cm 2cm 0.8cm},clip]{graphics/xfer_func.pdf}
+\end{center}
+\caption{\label{xfer_func}Set of transfer functions for a m=2 guide.}
+\end{figure}
+
+If neutrons are tallied at the guide entrance in the same polar and energy binning as the transfer funcitons, it can be multiplied by the set and summed over all incident angles to yield the integrated neutron spectrum at the guide exit.
 
 \subsection{Self-Consistency Test}
 
-plot of benchmark
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.4]{graphics/xfer_bench.pdf}
+\end{center}
+\caption{\label{xfer_bench}Set of transfer functions for a m=2 guide.}
+\end{figure}
 
 \section{REH Parametric Study in the Horizontal Plane}
 
