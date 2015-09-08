@@ -1,5 +1,5 @@
 \documentclass[a4paper]{jpconf}
-\usepackage{graphicx}
+\usepackage{graphicx,amsmath}
 \begin{document}
 \title{Upgrades to the SINQ Cold Neutron Source}
 
@@ -52,8 +52,31 @@ Also, some stability issues were encountered while using the reflectivtity patch
 
 \subsection{Guide Reflectivity}
 
-model
-guide parameters
+The guide reflectivity model implmented in MCNP is identical to that used in McStas.  The reflectivity curve for the current guide in the SINQ hall is shown in Figure \ref{SINQ_reflectivity}, along with the reflectivity equation and parameter values shown in Eq. \ref{eq:ref}.
+
+\begin{figure}[h]
+\begin{minipage}{14pc}
+\includegraphics[scale=.4]{graphics/refl.pdf}
+\caption{\label{SINQ_reflectivity} The reflectivity curve of the current SINQ neutron guides.}
+\end{minipage}\hspace{5pc}%
+\begin{minipage}{11pc}
+\begin{multline}\label{eq:ref}\scriptsize
+R(Q) = 
+\begin{cases}
+    \mbox{if } Q > Q_c : \\
+    \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
+    \\
+    \mbox{if } Q \leq Q_c :\\
+    R_0 \\
+\end{cases} \\ \\ 
+\begin{tabular}{c c c}
+$R_0=0.995$ & $Q_c=2.17\times10^{-2}\AA^{-1}$ & $m=3.6$ \\ 
+$\alpha=3.99 \AA$ & $W=10^{-3} \AA^{-1}$ 
+\end{tabular}
+\end{multline}
+\end{minipage} 
+\end{figure}
+
 
 \cite{mcnpx_reflectivity}
 
