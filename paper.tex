@@ -45,14 +45,15 @@ The second variance reduction method used is a ``DXTRAN'' sphere.  This tool is 
 
 \section{Neutron Guide Response} 
 
-In conjunction with the variance reduction methods described in the previous section, an approximation to how the neutron geuides transport neutrons was also used.  
+In conjunction with the variance reduction methods described in the previous section, an approximation to how the neutron geuides transport neutrons was also used.  A patch was developed at ORNL and PSI that implements the McStas guide reflectivity model in MCNPX 2.5.0 and 2.7.0 \cite{mcnp_reflectivity, EK_reflectivity}, but the model is analog and is not fully compatible with DXTRAN spheres.  The implmentation is analog in the sense that if a neutron is sampled to \emph{not} reflect on a guide surface, it is transmitted into the next cell.  This means that neutron paths have to be sampled multiple times to account for any reflectivity losses, which slows the simulation down.  
+
+Also, some stability issues were encountered while using the reflectivtity patch in conjunction with the DXTRAN sphere.  In order to ensure stable runs, a simulation was done first where a surface source was written at the guide entrance surface where any neutrons entering the guide were recorded and terminated.  This source was used in a second simulation with the guide reflecitvity turned on and used to transport the entering neutrons to the end of the guide where a tally was scored.  Again, this process slowed the simulation down and made studies with many cases more difficult.  An approximaiton to the guide response was used to eliminate the need for a second run to simply get the neutrons to the end of the guide.
 
 
 \subsection{Guide Reflectivity}
 
 model
 guide parameters
-stability issues
 
 \cite{mcnpx_reflectivity}
 
