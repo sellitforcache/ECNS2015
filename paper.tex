@@ -28,18 +28,24 @@ Calculations done prior to these changes predicted cold neutron fluence gains fr
 
 \section{Simulation Geometry}
 
-Figure \ref{geom} shows the important parts of the MCNP model geometry.  CAD
+Figure \ref{geom} shows a zoomed-in view of the important parts of the MCNP model geometry.  A CAD model of the neutron guide bundles was converted to MCNP geometry by the MCAM software from XXX university in XXX China and integrated into the model \cite{mcam}.  The target is made of Pb rods with zircalloy cladding and is cooled by D$_2$O, the moderator tank is filled with D$_2$O, the cold source is liquid D$_2$, the nozzles with a low-pressure helium mixture, and the shielding and neutron guide structure is steel.  All structural material in the moderator tank is AlMg3, which is shown in yellow in Figure \ref{geom}.
 
 \begin{figure}
 \begin{center}
 \includegraphics[trim={9.2cm 8cm 4cm 8cm},clip]{graphics/geom.pdf}
 \end{center}
-\caption{\label{geom}A horizontal slice through the MCNP simulation geometry showing the target (magenta), moderator tank (blue_, cold source (purple), nozzle (pink), and neutron guide entrance (grey with circle).}
+\caption{\label{geom}A horizontal slice through the MCNP simulation geometry showing the target (magenta), moderator tank (blue), cold source (purple), nozzle (pink), and neutron guide entrance (grey with circle).}
 \end{figure}
 
-mention variance reduction
+\section{Variance Reduction}
+
+Two variance reduciton methods were used in conjunction in order to perform the calculations in a reasonable amount of time.  First, mesh-based weight windows were generated based on the response of a point detector located 75 cm from the neutron guide entrance.  These windows serve to increase the number of neutrons that scatter inside the cold source while preserving the mean particle weight of an analog simulation by casusing the neutrons in the moderator tank to carry a higher weight then be split into many lower-weight particles when they enter the cold source volume.  
+
+The second variance reduction method used is a ``DXTRAN'' sphere.  This tool is a non-physical sphere that is placed around the guide entrance that causes neutrons to be generated on its surface.  Whenever a neutron undergoes a scattering reaction, the probability of scattering into the sphere's direction is calculated, a line is traced from the scattering location to the sphere's surface, and a neutron is generated there with a weight reduced by the scattering probability and the optical thickness of the medium in between.  The generated neutrons are then transported normally inside the sphere \cite{mcnp}.  This method served to preferentially scatter neutrons into the direction of the neutron guide.
 
 \section{Neutron Guide Response} 
+
+In conjunction with the variance reduction methods described in the previous section, an approximation to how the neutron geuides transport neutrons was also used.  
 
 
 \subsection{Guide Reflectivity}
