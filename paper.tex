@@ -101,21 +101,31 @@ In order to verify that the reconstruction method works as expected, a compariso
 \begin{center}
 \includegraphics[scale=0.4]{graphics/xfer_bench.pdf}
 \end{center}
-\caption{\label{xfer_bench}Set of transfer functions for a m=2 guide.}
+\caption{\label{xfer_bench}The reconstructed guide exit current compared to the exit current calculated with a MCNP simulation with guide reflectivity activated.}
 \end{figure}
 
 \section{REH Parametric Study in the Horizontal Plane}
 
 The re-entrant hole parametric study was done to investigate a wide range of geometries in the horizonal plane, where the guide width is smaller than the hole size.  Four REH depths (14, 10, 6, 2 cm), four opening widths (4, 8, 12, 16 cm), and eleven hole slopes (-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5) were investigated in the study for a total of 176 cases. Figure \ref{parametric_geom} shows the parameters in relation to the cold source geometry.  The REH vertical dimensions were chosen to be the full width of the nozzle with a slight tapering slope inward.  The vertical dimensions were kept constant in this study, but will be the focus of future work.
 
-\begin{figure}
+\begin{figure}[h]
+\begin{minipage}{14pc}
 \begin{center}
 \includegraphics[scale=0.4,trim={13cm 6cm 4cm 5cm},clip]{graphics/para_geom.pdf}
 \end{center}
 \caption{\label{parametric_geom}The geometry varied in the REH parametric study. ``A'' is the hole depth, ``B'' is the opening width, and ``C'' is the hole slope.}
+\end{minipage}\hspace{5pc}%
+\begin{minipage}{11pc}
+\begin{center}
+\includegraphics[scale=0.4,trim={11.2cm 8cm 5cm 3cm},clip]{graphics/case077.pdf}
+\end{center}
+\caption{\label{case077}The best-performing horizontal geometry for the REH.}
+\end{minipage} 
 \end{figure}
 
-With all of the variance reduciton and approximations implmented, each case took about one hour to run on the PSI cluster.  The spectra from all the cases are shown in upper plot in Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the guide from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall.  The performance is 
+With all of the variance reduciton and approximations implemented, each case took about one hour to run on a 144-core configuration on a computer cluster at PSI.  The spectra from all the cases are shown in upper plot in Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the guide from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall.  The parameters were varied in slope-width-depth order, with slope being the fasted varied parameter. Figure \ref{parametric_REH} has labeled, colored blocks in the lower plot to show which parameters are constant for that block.  Slope and opening width have the most affect on performance at large depths.
+
+The geometry of the best-performing case is shown in figure \ref{case077}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the radial center of the cold source.  
 
 \begin{figure}
 \begin{center}
@@ -123,17 +133,6 @@ With all of the variance reduciton and approximations implmented, each case took
 \end{center}
 \caption{\label{parametric_REH}The envelope formed by the spectra from all 176 cases considered (upper) and their figures of merit (lower) which is total current from 3 to 6 \AA{}.}
 \end{figure}
-
-The geometry of the best-performing case is shown in figure \ref{case077}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the cold source geometrical center.
-
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.6,trim={11.2cm 8cm 5cm 3cm},clip]{graphics/case077.pdf}
-\end{center}
-\caption{\label{case077}The best-performing horizontal geometry for the REH.}
-\end{figure}
-
-Figure \ref{parametric_gain} shows the gain from the best performaning REH geometry over an absent REH.  The maximum gain 1.32 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.25.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section dropping from about 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the re-entrant hole's benefits.
 
 \begin{figure}
 \begin{center}
@@ -143,12 +142,12 @@ Figure \ref{parametric_gain} shows the gain from the best performaning REH geome
 \end{figure}
 
 
+Figure \ref{parametric_gain} shows the gain from the best performaning REH geometry over an absent REH.  The maximum gain 1.32 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.25.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section dropping from about 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the re-entrant hole's benefits.
+
+
 \section{Conculsions}
 
-Flux reconstruction method verified  to be at least self-consistent
-Near optimal X-Y REH geometry has been determined
-REH increases total exit current by 1.25\% on average from 3-6 \AA{} with a peak gain of 1.32 at 5.5 \AA{}.
-
+From this study and the requirements it imposed on the simulation method, it can be concluded that the flux reconstruction method has been verified to be at least self-consistent, and that a near-optimal horizontal REH geometry has been determined.  The REH increases total exit current by 1.25\% on average from 3-6 \AA{} with a peak gain of 1.32 at 5.5 \AA{}.
 
 \section{Future Work}
 
