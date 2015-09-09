@@ -1,5 +1,7 @@
 \documentclass[a4paper]{jpconf}
 \usepackage{graphicx,amsmath}
+\bibliographystyle{iopart-num}
+
 \begin{document}
 \title{Upgrades to the SINQ Cold Neutron Source}
 
@@ -157,13 +159,8 @@ Different types of reflector materials and configurations will also be investiga
 
 Futher development of the guide refelctivity patch for MCNP 6.1 will also be done.  Specifically, making a switch to reduce neutron weight upon reflection instead of leaking non-reflected neutrons in order to speed up in-beam calculations where this signal is of interest and not the noise.
 
-
-\section{References}
-
-\subsection{Using \BibTeX}
-We highly recommend the {\ttfamily\textbf\selectfont iopart-num} \BibTeX\ package by Mark~A~Caprio \cite{iopartnum}, which is included with this documentation.
+\section*{References}
+\bibliography{paper}
 
 
 \end{document}
-
-
