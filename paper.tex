@@ -18,11 +18,11 @@
 
 \section{Introduction}
 
-There is a planned shutdown of the Swiss Spallation Neutron Source (SINQ) in 2017, which provides an opportunity for changes to be made to the liquid deuterium cold neutron source.  The 20 liter volume of liquid D$_2$ at approximately 25 K is located within the D$_2$O moderator tank surrounding the Pb spallation target.  The innermost face of the cold source is approximately 35 cm away from the center of the target.  In the planned upgrade strategies, no changes to the surrounding aluminium and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  I.e., all changes must fit into the existing multi-walled insert geometry.  
+There is a planned shutdown of the Swiss Spallation Neutron Source (SINQ) in 2017, which provides an opportunity for changes to be made to the liquid deuterium cold neutron source.  The 20 liter volume of liquid D$_2$ at approximately 25 K is located within the D$_2$O moderator tank surrounding the Pb spallation target.  The innermost face of the cold source is approximately 35 cm away from the center of the target.  In the planned upgrade strategies, no changes to the surrounding aluminum and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  I.e., all changes must fit into the existing multi-walled insert geometry.  
 
 \section{Re-entrant Hole}
 
-The goal of the re-entrant hole (REH) is to remove scattering and absorbing material between the cold neutron maximum and the direction of interest.  In this case, the cold neutron maximum is at the center of the cold source and the direciton of interest is towards the SINQ guide hall.  
+The goal of the re-entrant hole (REH) is to remove scattering and absorbing material between the cold neutron maximum and the direction of interest.  In this case, the cold neutron maximum is at the center of the cold source and the direction of interest is towards the SINQ guide hall.  
 
 Voiding the re-entrant hole relies on radiative heating to boil D$_2$ which in turn fills the re-entrant hole cavity, pushing the liquid D$_2$ out.  Proposed plans include making the re-entrant hole external (ensuring that it is not filled with liquid D$_2$)
 
@@ -41,20 +41,20 @@ Figure \ref{geom} shows a zoomed-in view of the important parts of the MCNP mode
 
 \section{Variance Reduction}
 
-Two variance reduciton methods were used in conjunction in order to perform the calculations in a reasonable amount of time.  First, mesh-based weight windows were generated based on the response of a point detector located 75 cm from the neutron guide entrance.  These windows serve to increase the number of neutrons that scatter inside the cold source while preserving the mean particle weight of an analog simulation by casusing the neutrons in the moderator tank to carry a higher weight then be split into many lower-weight particles when they enter the cold source volume.  
+Two variance reduction methods were used in conjunction in order to perform the calculations in a reasonable amount of time.  First, mesh-based weight windows were generated based on the response of a point detector located 75 cm from the neutron guide entrance.  These windows serve to increase the number of neutrons that scatter inside the cold source while preserving the mean particle weight of an analog simulation by causing the neutrons in the moderator tank to carry a higher weight then be split into many lower-weight particles when they enter the cold source volume.  
 
 The second variance reduction method used is a ``DXTRAN'' sphere.  This tool is a non-physical sphere that is placed around the guide entrance that causes neutrons to be generated on its surface.  Whenever a neutron undergoes a scattering reaction, the probability of scattering into the sphere's direction is calculated, a line is traced from the scattering location to the sphere's surface, and a neutron is generated there with a weight reduced by the scattering probability and the optical thickness of the medium in between.  The generated neutrons are then transported normally inside the sphere \cite{mcnp}.  This method served to preferentially scatter neutrons into the direction of the neutron guide.
 
 \section{Neutron Guide Response} 
 
-In conjunction with the variance reduction methods described in the previous section, an approximation to how the neutron geuides transport neutrons was also used.  A patch was developed at ORNL and PSI that implements the McStas guide reflectivity model in MCNPX 2.5.0 and 2.7.0 \cite{mcnp_reflectivity, EK_reflectivity}, but the model is analog and is not fully compatible with DXTRAN spheres.  The implmentation is analog in the sense that if a neutron is sampled to \emph{not} reflect on a guide surface, it is transmitted into the next cell.  This means that neutron paths have to be sampled multiple times to account for any reflectivity losses, which slows the simulation down.  
+In conjunction with the variance reduction methods described in the previous section, an approximation to how the neutron geuides transport neutrons was also used.  A patch was developed at ORNL and PSI that implements the McStas guide reflectivity model in MCNPX 2.5.0 and 2.7.0 \cite{mcnp_reflectivity, EK_reflectivity}, but the model is analog and is not fully compatible with DXTRAN spheres.  The implementation is analog in the sense that if a neutron is sampled to \emph{not} reflect on a guide surface, it is transmitted into the next cell.  This means that neutron paths have to be sampled multiple times to account for any reflectivity losses, which slows the simulation down.  
 
-Also, some stability issues were encountered while using the reflectivtity patch in conjunction with the DXTRAN sphere.  In order to ensure stable runs, a simulation was done first where a surface source was written at the guide entrance surface where any neutrons entering the guide were recorded and terminated.  This source was used in a second simulation with the guide reflecitvity turned on and used to transport the entering neutrons to the end of the guide where a tally was scored.  Again, this process slowed the simulation down and made studies with many cases more difficult.  An approximaiton to the guide response was used to eliminate the need for a second run to simply get the neutrons to the end of the guide.
+Also, some stability issues were encountered while using the reflectivity patch in conjunction with the DXTRAN sphere.  In order to ensure stable runs, a simulation was done first where a surface source was written at the guide entrance surface where any neutrons entering the guide were recorded and terminated.  This source was used in a second simulation with the guide reflectivity turned on and used to transport the entering neutrons to the end of the guide where a tally was scored.  Again, this process slowed the simulation down and made studies with many cases more difficult.  An approximation to the guide response was used to eliminate the need for a second run to simply get the neutrons to the end of the guide.
 
 
 \subsection{Guide Reflectivity}
 
-The guide reflectivity model implmented in MCNP is identical to that used in McStas.  The reflectivity curve for the current guide in the SINQ hall is shown in Figure \ref{SINQ_reflectivity} andh the reflectivity equation and parameter values shown in Eq. \ref{eq:ref}.  The values shown are the same for all the guides in the SINQ hall \cite{SINQ_guide_values}.
+The guide reflectivity model implemented in MCNP is identical to that used in McStas.  The reflectivity curve for the current guide in the SINQ hall is shown in Figure \ref{SINQ_reflectivity} and the reflectivity equation and parameter values shown in Eq. \ref{eq:ref}.  The values shown are the same for all the guides in the SINQ hall \cite{SINQ_guide_values}.
 
 \begin{figure}[h]
 \begin{minipage}{14pc}
@@ -79,7 +79,7 @@ $\alpha=6.40 \AA$ & $W=4.0\times10^{-3} \AA^{-1}$
 \end{minipage} 
 \end{figure}
 
-Since the neutron reflection probability is based on momentum transfer and the reflections are specular, it is determined by the incident neutron angle and energy.  If the guide is rectangular, the reflection probability will not change as the neutron travels down the guide since the reflection angle will remain constant.  These conditions mean that the exiting neutron current should be compleltely defined by the incident polar angle and energy of a neutron entering the guide.  The position in the guide entrance will determine the phase of the exiting rays, but if the entire exit surface is summed over, this phase becomes irrelevant.
+Since the neutron reflection probability is based on momentum transfer and the reflections are specular, it is determined by the incident neutron angle and energy.  If the guide is rectangular, the reflection probability will not change as the neutron travels down the guide since the reflection angle will remain constant.  These conditions mean that the exiting neutron current should be completely defined by the incident polar angle and energy of a neutron entering the guide.  The position in the guide entrance will determine the phase of the exiting rays, but if the entire exit surface is summed over, this phase becomes irrelevant.
 
 \subsection{Reconstruction}
 
@@ -93,11 +93,11 @@ In order to approximate the neutron current exiting the guide, a number of fixed
 \caption{\label{xfer_func}Set of transfer functions for a m=2 guide.}
 \end{figure}
 
-If neutrons are tallied at the guide entrance in the same polar and energy binning as the transfer funcitons, it can be multiplied by the set and summed over all incident angles to yield the integrated neutron spectrum at the guide exit.  This way, the reflectivity model can be eliminated from the transport runs and a good estimate of the exiting current can still be made.
+If neutrons are tallied at the guide entrance in the same polar and energy binning as the transfer functions, it can be multiplied by the set and summed over all incident angles to yield the integrated neutron spectrum at the guide exit.  This way, the reflectivity model can be eliminated from the transport runs and a good estimate of the exiting current can still be made.
 
 \subsection{Self-Consistency Test}
 
-In order to verify that the reconstruction method works as expected, a comparison to the spectrum calculated by the explicit model was made.  As mentioned previously, a surface source was written at the guide entrance, then this was used as the source for a second run with the guide reflectivity activiated.  During this run, the entry and exit current was tallied.  The entry current was binning in polar angle according to the divisions in the pre-calculated transfer functions.  The results of the comparison are shown in Figure \ref{xfer_bench}.  The green line is the integrated neutron spectrum at the guide entrance, the blue line is the integrated exit current that was tallied at the guide exit, and the red curve is the exit spectrum calculated by multiplying the entrance spectrum by the transfer functions (and then summing them).  The maximum error seen is about XXX\%, and decreases with energy, and has a 1-norm value of XXX\%.
+In order to verify that the reconstruction method works as expected, a comparison to the spectrum calculated by the explicit model was made.  As mentioned previously, a surface source was written at the guide entrance, then this was used as the source for a second run with the guide reflectivity activated.  During this run, the entry and exit current was tallied.  The entry current was binning in polar angle according to the divisions in the pre-calculated transfer functions.  The results of the comparison are shown in Figure \ref{xfer_bench}.  The green line is the integrated neutron spectrum at the guide entrance, the blue line is the integrated exit current that was tallied at the guide exit, and the red curve is the exit spectrum calculated by multiplying the entrance spectrum by the transfer functions (and then summing them).  The maximum error seen is about XXX\%, and decreases with energy, and has a 1-norm value of XXX\%.
 
 \begin{figure}
 \begin{center}
@@ -108,7 +108,7 @@ In order to verify that the reconstruction method works as expected, a compariso
 
 \section{REH Parametric Study in the Horizontal Plane}
 
-The re-entrant hole parametric study was done to investigate a wide range of geometries in the horizonal plane, where the guide width is smaller than the hole size.  Four REH depths (14, 10, 6, 2 cm), four opening widths (4, 8, 12, 16 cm), and eleven hole slopes (-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5) were investigated in the study for a total of 176 cases. Figure \ref{parametric_geom} shows the parameters in relation to the cold source geometry.  The REH vertical dimensions were chosen to be the full width of the nozzle with a slight tapering slope inward.  The vertical dimensions were kept constant in this study, but will be the focus of future work.
+The re-entrant hole parametric study was done to investigate a wide range of geometries in the horizontal plane, where the guide width is smaller than the hole size.  Four REH depths (14, 10, 6, 2 cm), four opening widths (4, 8, 12, 16 cm), and eleven hole slopes (-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5) were investigated in the study for a total of 176 cases. Figure \ref{parametric_geom} shows the parameters in relation to the cold source geometry.  The REH vertical dimensions were chosen to be the full width of the nozzle with a slight tapering slope inward.  The vertical dimensions were kept constant in this study, but will be the focus of future work.
 
 \begin{figure}[h]
 \begin{minipage}{14pc}
@@ -125,7 +125,7 @@ The re-entrant hole parametric study was done to investigate a wide range of geo
 \end{minipage} 
 \end{figure}
 
-With all of the variance reduciton and approximations implemented, each case took about one hour to run on a 144-core configuration on a computer cluster at PSI.  The spectra from all the cases are shown in upper plot in Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the guide from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall.  The parameters were varied in slope-width-depth order, with slope being the fasted varied parameter. Figure \ref{parametric_REH} has labeled, colored blocks in the lower plot to show which parameters are constant for that block.  Slope and opening width have the most affect on performance at large depths.
+With all of the variance reduction and approximations implemented, each case took about one hour to run on a 144-core configuration on a computer cluster at PSI.  The spectra from all the cases are shown in upper plot in Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the guide from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall.  The parameters were varied in slope-width-depth order, with slope being the fasted varied parameter. Figure \ref{parametric_REH} has labeled, colored blocks in the lower plot to show which parameters are constant for that block.  Slope and opening width have the most affect on performance at large depths.
 
 The geometry of the best-performing case is shown in figure \ref{case077}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the radial center of the cold source.  
 
@@ -144,20 +144,20 @@ The geometry of the best-performing case is shown in figure \ref{case077}.  The 
 \end{figure}
 
 
-Figure \ref{parametric_gain} shows the gain from the best performaning REH geometry over an absent REH.  The maximum gain 1.32 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.25.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section dropping from about 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the re-entrant hole's benefits.
+Figure \ref{parametric_gain} shows the gain from the best performing REH geometry over an absent REH.  The maximum gain 1.29 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.24.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section dropping from about 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the re-entrant hole's benefits.
 
 
 \section{Conculsions}
 
-From this study and the requirements it imposed on the simulation method, it can be concluded that the flux reconstruction method has been verified to be at least self-consistent, and that a near-optimal horizontal REH geometry has been determined.  The REH increases total exit current by 1.25\% on average from 3-6 \AA{} with a peak gain of 1.32 at 5.5 \AA{}.
+From this study and the requirements it imposed on the simulation method, it can be concluded that the flux reconstruction method has been verified to be at least self-consistent, and that a near-optimal horizontal REH geometry has been determined.  The REH increases total exit current by 1.24\% on average from 3-6 \AA{} with a peak gain of 1.29 at 5.5 \AA{}.
 
 \section{Future Work}
 
-This study has only determined the horizontla geometry of the re-entrant hole in the cold source at SINQ.  Another study is needed to investigate REH sensitivity to vertical changes, as well as a parametric study over a smaller range near the optimal point to determine more exact dimensions.  The affect the REH has on the neutron flux on the opposite side will also be determined.
+This study has only determined the horizontal geometry of the re-entrant hole in the cold source at SINQ.  Another study is needed to investigate REH sensitivity to vertical changes, as well as a parametric study over a smaller range near the optimal point to determine more exact dimensions.  The affect the REH has on the neutron flux on the opposite side will also be determined.
 
 Different types of reflector materials and configurations will also be investigated.  The refector sits behind the cold source on the side opposite the target and reducing cold neutron losses in it may increase the guide exit current.  Adding a belt of liquid H$_2$ to produce a ``cold spot'' for focusing instruments will also be investigated.  In these studies, the flux reconstruction method will once again be used.
 
-Futher development of the guide refelctivity patch for MCNP 6.1 will also be done.  Specifically, making a switch to reduce neutron weight upon reflection instead of leaking non-reflected neutrons in order to speed up in-beam calculations where this signal is of interest and not the noise.
+Further development of the guide reflectivity patch for MCNP 6.1 will also be done.  Specifically, making a switch to reduce neutron weight upon reflection instead of leaking non-reflected neutrons in order to speed up in-beam calculations where this signal is of interest and not the noise.
 
 \section*{References}
 \bibliography{paper}
