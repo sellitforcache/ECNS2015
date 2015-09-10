@@ -18,7 +18,7 @@
 
 \section{Introduction}
 
-There is a planned shutdown of the Swiss Spallation Neutron Source (SINQ) in 2017, which provides an opportunity for changes to be made to the liquid deuterium cold neutron source.  The 20 liter volume of liquid D$_2$ at approximately 25 K is located within the D$_2$O moderator tank surrounding the Pb spallation target.  The innermost face of the cold source is approximately 35 cm away from the center of the target.  In the planned upgrade strategies, no changes to the surrounding aluminum and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  I.e., all changes must fit into the existing multi-walled insert geometry.  
+There is a planned shutdown of the Swiss Spallation Neutron Source (SINQ) in 2017, which provides an opportunity for changes to be made to the liquid deuterium cold neutron source \cite{upgrade}.  The 20 liter volume of liquid D$_2$ at approximately 25 K is located within the D$_2$O moderator tank surrounding the lead spallation target.  The innermost face of the cold source is approximately 35 cm away from the center of the target.  In the planned upgrade strategies, no changes to the surrounding aluminum and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  I.e., all changes must fit into the existing multi-walled insert geometry.  
 
 \section{Re-entrant Hole}
 
@@ -26,7 +26,7 @@ The goal of the re-entrant hole (REH) is to remove scattering and absorbing mate
 
 Voiding the re-entrant hole relies on radiative heating to boil D$_2$ which in turn fills the re-entrant hole cavity, pushing the liquid D$_2$ out.  Proposed plans include making the re-entrant hole external (ensuring that it is not filled with liquid D$_2$)
 
-Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.6, with gains increasing with wavelength. These increases have not been observed, and it is suspected that the re-entrant hole is not fully voided.  All future designs will have an external REH, which will decouple the fill level from radiation heating and ensure that the REH is never filled with liquid D$_2$.
+Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.6, with gains increasing with wavelength \cite{atch_icans}. These increases have not been observed, and it is suspected that the re-entrant hole is not fully voided.  All future designs will have an external REH, which will decouple the fill level from radiation heating and ensure that the REH is never filled with liquid D$_2$.
 
 \section{Simulation Geometry}
 
@@ -43,7 +43,7 @@ Figure \ref{geom} shows a zoomed-in view of the important parts of the MCNP mode
 
 Two variance reduction methods were used in conjunction in order to perform the calculations in a reasonable amount of time.  First, mesh-based weight windows were generated based on the response of a point detector located 75 cm from the neutron guide entrance.  These windows serve to increase the number of neutrons that scatter inside the cold source while preserving the mean particle weight of an analog simulation by causing the neutrons in the moderator tank to carry a higher weight then be split into many lower-weight particles when they enter the cold source volume.  
 
-The second variance reduction method used is a ``DXTRAN'' sphere.  This tool is a non-physical sphere that is placed around the guide entrance that causes neutrons to be generated on its surface.  Whenever a neutron undergoes a scattering reaction, the probability of scattering into the sphere's direction is calculated, a line is traced from the scattering location to the sphere's surface, and a neutron is generated there with a weight reduced by the scattering probability and the optical thickness of the medium in between.  The generated neutrons are then transported normally inside the sphere \cite{mcnp}.  This method served to preferentially scatter neutrons into the direction of the neutron guide.
+The second variance reduction method used is a ``DXTRAN'' sphere.  This tool is a non-physical sphere that is placed around the guide entrance that causes neutrons to be generated on its surface.  Whenever a neutron undergoes a scattering reaction, the probability of scattering into the sphere's direction is calculated, a line is traced from the scattering location to the sphere's surface, and a neutron is generated there with a weight reduced by the scattering probability and the optical thickness of the medium in between.  The generated neutrons are then transported normally inside the sphere \cite{mcnp5}.  This method served to preferentially scatter neutrons into the direction of the neutron guide.
 
 \section{Neutron Guide Response} 
 
