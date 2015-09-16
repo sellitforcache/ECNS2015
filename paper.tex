@@ -127,13 +127,11 @@ The re-entrant hole parametric study was done to investigate a wide range of geo
 
 With all of the variance reduction and approximations implemented, each case took about one hour to run on a 144-core configuration on a computer cluster at PSI.  The spectra from all the cases are shown in the upper plot of Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the AMOR guide from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall \cite{intruments_wavelength}.  The parameters were varied in slope-width-depth order, with slope being the fastest varied parameter. Figure \ref{parametric_REH} has labeled, colored blocks in the lower plot to show which parameters are constant for that block.  Slope and opening width have the most effect on the exit current at large hole depths.
 
-The geometry of the best-performing case is shown in figure \ref{case077}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the radial center of the cold source.  
-
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.38,trim={1cm 2.35cm 1cm 0cm},clip]{graphics/parametric_REH.pdf}
+\includegraphics[scale=0.26,trim={0cm 0cm 0cm 0cm},clip]{graphics/parametric_REH.pdf}
 \end{center}
-\caption{\label{parametric_REH}The envelope formed by the spectra from all 176 cases considered (upper) and their figures of merit (lower) which is total current from 3 to 6 \AA{}.}
+\caption{\label{parametric_REH}The envelope formed by the spectra from all 176 cases considered (upper) and their figures of merit (lower) which is total current from 3 to 6 \AA{}.  Case000 is the case with the REH completely filled.}
 \end{figure}
 
 \begin{figure}
@@ -143,6 +141,7 @@ The geometry of the best-performing case is shown in figure \ref{case077}.  The 
 \caption{\label{parametric_gain}The gain factor of the neutron guide exit current of best-performing REH geometry over the REH being absent.  The thick, red line is the simulation data smoothed over 15 bins.}
 \end{figure}
 
+The geometry of the best-performing case is shown in figure \ref{case077}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the radial center of the cold source.  
 
 Figure \ref{parametric_gain} shows the gain from the best performing REH geometry over an absent REH.  The maximum gain is 1.29 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.24.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section decreasing between 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the re-entrant hole's benefits.
 
