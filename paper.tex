@@ -18,11 +18,13 @@
 
 \section{Introduction}
 
-There is a planned shutdown of the Swiss Spallation Neutron Source (SINQ) in 2017, which provides an opportunity for changes to be made to the liquid deuterium cold neutron source \cite{rueegg_icans}.  The 20 liter volume of liquid D$_2$ at approximately 25 K is located within the D$_2$O moderator tank surrounding the lead spallation target.  The innermost face of the cold source is approximately 35 cm away from the center of the target.  In the planned upgrade strategies, no changes to the surrounding aluminum and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  In other words, all changes must fit into the existing multi-walled insert geometry.  
+The Swiss Spallation Neutron Source (SINQ) is a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The cold source is a 20 liter volume of liquid D$_2$ at approximately 25 K located within the D$_2$O moderator tank with its innermost face approximately 35 cm away from the center of the target.  It serves to further reduce the energies of the ``thermal'' neutrons coming from the D$_2$O tank into a regime that is more useful to instruments which receive neutrons from its surface.  Neutrons are transported from the cold source to the intruments via neutron guides, which are internally coated with neutron ``supermirrors'', which are reflective to neutrons at low energies and low indcient angles \cite{mcnp_reflectivity}.
+
+There is an extended shutdown of SINQ ambitiously planned for 2018 which will provide an opportunity for changes to be made to the cold neutron source \cite{rueegg_icans}.  In the planned upgrade strategies, no changes to the surrounding aluminum and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  In other words, all changes must fit into the existing multi-walled insert geometry.  This paper presents a parametric study on changes to the physical dimensions of cold source and the predicted effects these changes have on the integral neutron in the neutron guides.
 
 \section{Re-entrant Hole}
 
-The goal of the re-entrant hole (REH) is to remove scattering and absorbing material between the spot with the maximum cold neutron flux and the direction of interest.  In this case, this spot is at the center of the cold source and the direction of interest is towards the SINQ guide hall.  
+The goal of a re-entrant hole (REH) is to remove scattering and absorbing material between the spot with the maximum cold neutron flux and the direction of interest.  In this case, this spot is at the center of the cold source and the direction of interest is towards the SINQ guide hall.  
 
 The REH is presently a five-sided box with the open face at the bottom.  It sits inside the D$_2$ volume directly next to the wall facing the guide hall.  Voiding this kind of re-entrant hole relies on radiative heating to boil D$_2$ which in turn fills the re-entrant hole cavity with vapor, pushing the liquid D$_2$ out.  Proposed plans include making the re-entrant hole external, ensuring that it is not filled with liquid D$_2$.
 
@@ -32,7 +34,7 @@ Calculations done prior to these changes predicted cold neutron fluence gains fr
 
 Figure \ref{geom} shows a zoomed-in view of the important parts of the MCNP model geometry.  A CAD model of the neutron guide bundles was converted to MCNP geometry by the MCAM and integrated into the model \cite{mcam}.  The target is made of lead rods with zircaloy cladding and is cooled by D$_2$O, the moderator tank is filled with D$_2$O, the cold source is liquid D$_2$, the nozzles are filled with a low-pressure helium mixture, and the shielding and neutron guide structure is steel.  All structural material in the moderator tank is AlMg3, which is shown in yellow in Figure \ref{geom}.  The cross sections used in the simulations were from the ENDF/B-VII.1 library.  Thermal scattering S($\alpha$,$\beta$) tables (continuous-energy when possible) were used for both moderators and structural materials within the moderator tank \cite{sab}.
 
-\begin{figure}
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[trim={9.2cm 8cm 4cm 8cm},clip]{graphics/geom2.pdf}
 \end{center}
@@ -79,7 +81,7 @@ $\alpha=6.40 \AA$ & $W=4.0\times10^{-3} \AA^{-1}$
 \end{minipage} 
 \end{figure}
 
-Since the neutron reflection probability is based on momentum transfer and the reflections are specular, the probability is determined by the incident neutron angle and energy.  If the guide is rectangular, the reflection probability will not change as the neutron travels down the guide since the reflection angle remains constant.  These conditions mean that the exiting neutron current should be completely defined by the incident polar angle and energy of a neutron entering the guide.  The vertical and horizontal position in the guide entrance determines the where neutrons exit the guide, but if the exit current is integrated over exit postition, exit position becomes irrelevant and only the transmission probability matters.
+Since the neutron reflection probability is based on momentum transfer and the reflections are specular, the probability is determined by the incident neutron angle and energy.  If the guide is rectangular, the reflection probability will not change as the neutron travels down the guide since the reflection angle remains constant.  These conditions mean that the exiting neutron current should be completely defined by the incident polar angle and energy of a neutron entering the guide.  The vertical and horizontal position in the guide entrance determines where neutrons exit the guide, but if the exit current is integrated over exit position, exit position becomes irrelevant and only the transmission probability matters.
 
 \subsection{Reconstruction}
 
@@ -88,7 +90,7 @@ In order to approximate the spatially-integrated neutron spectrum at the guide e
 %trim <left> <lower> <right> <upper>
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.3,trim={2cm 1.7cm 1.8cm 0.8cm},clip]{graphics/xfer_func.pdf}
+\includegraphics[scale=0.3,trim={4cm 0.5cm 0cm 0cm},clip]{graphics/xfer_func.pdf}
 \end{center}
 \caption{\label{xfer_func}Set of transfer functions for a $m=2$ guide.}
 \end{figure}
@@ -125,7 +127,7 @@ The re-entrant hole parametric study was done to investigate a wide range of geo
 \end{minipage} 
 \end{figure}
 
-With all of the variance reduction and approximations implemented, each case took about one hour to run on a 144-core configuration on a computer cluster at PSI.  The spectra from all the cases are shown in the upper plot of Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the AMOR/SANS-I guide from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall \cite{intruments_wavelength}.  The parameters were varied in slope-width-depth order, with slope being the fastest varied parameter. Figure \ref{parametric_REH} has labeled, colored blocks in the lower plot to show which parameters are constant for that block.  Slope and opening width have the most effect on the exit current at large hole depths.
+With all of the variance reduction and approximations implemented, each case took about one hour to run on a 144-core configuration on a computer cluster at PSI.  The spectra from all the cases are shown in the upper plot of Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the AMOR/SANS-I guide six meters from the cold source surface from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall \cite{intruments_wavelength}.  The parameters were varied in slope-width-depth order, with slope being the fastest varied parameter. Figure \ref{parametric_REH} has labeled, colored blocks in the lower plot to show which parameters are constant for that block.  Slope and opening width have the most effect on the exit current at large hole depths.
 
 \begin{figure}
 \begin{center}
@@ -146,15 +148,13 @@ The geometry of the best-performing case is shown in figure \ref{case077}.  The 
 Figure \ref{parametric_gain} shows the gain from the best performing REH geometry over an absent REH.  The maximum gain is 1.29 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.24.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section decreasing between 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the re-entrant hole's benefits.
 
 
-\section{Conculsions}
+\section{Conclusions}
 
 From this study, it can be concluded that the flux reconstruction method is at least self-consistent, and can speed up calculations significantly.  Furthermore, a near-optimal horizontal REH geometry has been determined.  The REH increases total exit current for wavelengths of 3-6 \AA{} by a factor of 1.24 on average. The peak gain is 1.29 at a wavelength of 5.5 \AA{}.
 
 \section{Future Work}
 
-This study has only determined the optimal horizontal geometic dimensions of the re-entrant hole in the cold source at SINQ.  Another study is needed to investigate REH sensitivity to changes in the vertical dimensions, as well as a parametric study over a smaller range near the optimal point to determine more exact dimensions.  The effect the REH has on the neutron flux on the opposite side of the cold source will also be determined.
-
-Different types of reflector materials and configurations will also be investigated.  The reflector sits behind the cold source (the side opposite the target), and reducing cold neutron losses in it may increase the guide exit current.  Adding a belt of liquid H$_2$ to produce a ``cold spot'' for focusing instruments will also be investigated.  In these studies, the flux reconstruction method will once again be used.
+The optimal horizontal dimensions of the REH have been determined, another study is needed to investigate REH sensitivity to changes in the vertical dimensions.  The effect the REH has on the neutron flux on the opposite side of the cold source will also be determined.  Different types of reflector materials and configurations will also be investigated.  The reflector sits behind the cold source (the side opposite the target), and reducing cold neutron losses in it may increase the guide exit current.  Adding a belt of liquid H$_2$ to produce a ``cold spot'' for focusing instruments will also be investigated.  In these studies, the flux reconstruction method will once again be used.
 
 A guide reflectivity patch for MCNP 6.1 will also be done.  Ideally, it will also include a switch to reduce neutron weight upon reflection instead of leaking non-reflected neutrons. This should help speed up in-beam calculations where this signal is of interest and not the noise.
 
